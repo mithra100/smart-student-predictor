@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Smart Student Performance Predictor</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            background: #eaf2ff;
+            text-align: center;
+            padding: 30px;
+        }
+
+        .box {
+            background: white;
+            width: 400px;
+            margin: auto;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 0 15px gray;
+        }
+
+        h1 {
+            color: #2563eb;
+        }
+
+        input {
+            width: 90%;
+            padding: 12px;
+            margin: 8px;
+            border: 1px solid #aaa;
+            border-radius: 6px;
+        }
+
+        button {
+            padding: 12px 25px;
+            background: #2563eb;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background: #1746a2;
+        }
+
+        #result {
+            margin-top: 20px;
+            padding: 15px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="box">
+
+    <h1>🎓 Smart Student Predictor</h1>
+
+    <p>Enter student details</p>
+
+    <input type="number" id="attendance" placeholder="Attendance %">
+
+    <input type="number" id="study" placeholder="Study Hours per Day">
+
+    <input type="number" id="assignment" placeholder="Assignment Mark %">
+
+    <input type="number" id="exam" placeholder="Previous Exam Mark %">
+
+    <br>
+
+    <button onclick="predict()">Predict Performance</button>
+
+    <div id="result"></div>
+
+</div>
+
+<script>
+
+function predict() {
+
+    let attendance = Number(document.getElementById("attendance").value);
+    let study = Number(document.getElementById("study").value);
+    let assignment = Number(document.getElementById("assignment").value);
+    let exam = Number(document.getElementById("exam").value);
+
+    let result = document.getElementById("result");
+
+    if (!attendance || !study || !assignment || !exam) {
+        result.innerHTML = "⚠️ Please enter all details.";
+        return;
+    }
+
+    let score =
+        (attendance * 0.25) +
+        (study * 10 * 0.20) +
+        (assignment * 0.25) +
+        (exam * 0.30);
+
+    if (score >= 75) {
+
+        result.innerHTML =
+        "🟢 GOOD PERFORMANCE<br><br>" +
+        "Recommendation: Keep your current study routine.";
+
+    } else if (score >= 50) {
+
+        result.innerHTML =
+        "🟡 AVERAGE PERFORMANCE<br><br>" +
+        "Recommendation: Increase your study time.";
+
+    } else {
+
+        result.innerHTML =
+        "🔴 NEEDS IMPROVEMENT<br><br>" +
+        "Recommendation: Improve attendance and study regularly.";
+
+    }
+}
+
+</script>
+
+</body>
+</html>
