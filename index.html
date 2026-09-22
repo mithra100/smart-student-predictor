@@ -1,127 +1,234 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Smart Student Performance Predictor</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <style>
-        body {
-            font-family: Arial;
-            background: #eaf2ff;
-            text-align: center;
-            padding: 30px;
-        }
+    <title>Smart Student Predictor</title>
 
-        .box {
-            background: white;
-            width: 400px;
-            margin: auto;
-            padding: 25px;
-            border-radius: 15px;
-            box-shadow: 0 0 15px gray;
-        }
-
-        h1 {
-            color: #2563eb;
-        }
-
-        input {
-            width: 90%;
-            padding: 12px;
-            margin: 8px;
-            border: 1px solid #aaa;
-            border-radius: 6px;
-        }
-
-        button {
-            padding: 12px 25px;
-            background: #2563eb;
-            color: white;
-            border: none;
-            border-radius: 6px;
-            cursor: pointer;
-            margin-top: 10px;
-        }
-
-        button:hover {
-            background: #1746a2;
-        }
-
-        #result {
-            margin-top: 20px;
-            padding: 15px;
-            font-weight: bold;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<div class="box">
+    <header>
+        <div class="logo">🎓 Smart Student Predictor</div>
 
-    <h1>🎓 Smart Student Predictor</h1>
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#predictor">Predictor</a>
+            <a href="#about">About</a>
+        </nav>
+    </header>
 
-    <p>Enter student details</p>
 
-    <input type="number" id="attendance" placeholder="Attendance %">
+    <section id="home" class="hero">
 
-    <input type="number" id="study" placeholder="Study Hours per Day">
+        <div class="hero-content">
 
-    <input type="number" id="assignment" placeholder="Assignment Mark %">
+            <div class="tag">AI Powered Student Analysis</div>
 
-    <input type="number" id="exam" placeholder="Previous Exam Mark %">
+            <h1>
+                Smart Student<br>
+                <span>Performance Predictor</span>
+            </h1>
 
-    <br>
+            <p>
+                Analyze your academic details and predict your
+                future performance using our smart prediction system.
+            </p>
 
-    <button onclick="predict()">Predict Performance</button>
+            <a href="#predictor" class="button">
+                Start Prediction →
+            </a>
 
-    <div id="result"></div>
+        </div>
 
-</div>
+        <div class="hero-card">
 
-<script>
+            <div class="emoji">📊</div>
 
-function predict() {
+            <h2>Smart Analysis</h2>
 
-    let attendance = Number(document.getElementById("attendance").value);
-    let study = Number(document.getElementById("study").value);
-    let assignment = Number(document.getElementById("assignment").value);
-    let exam = Number(document.getElementById("exam").value);
+            <p>
+                Attendance • Study Hours • Previous Marks • Assignments
+            </p>
 
-    let result = document.getElementById("result");
+        </div>
 
-    if (!attendance || !study || !assignment || !exam) {
-        result.innerHTML = "⚠️ Please enter all details.";
-        return;
-    }
+    </section>
 
-    let score =
-        (attendance * 0.25) +
-        (study * 10 * 0.20) +
-        (assignment * 0.25) +
-        (exam * 0.30);
 
-    if (score >= 75) {
+    <section id="predictor" class="predictor">
 
-        result.innerHTML =
-        "🟢 GOOD PERFORMANCE<br><br>" +
-        "Recommendation: Keep your current study routine.";
+        <div class="heading">
 
-    } else if (score >= 50) {
+            <div class="tag">Student Predictor</div>
 
-        result.innerHTML =
-        "🟡 AVERAGE PERFORMANCE<br><br>" +
-        "Recommendation: Increase your study time.";
+            <h2>Predict Your Performance</h2>
 
-    } else {
+            <p>
+                Enter your academic details below.
+            </p>
 
-        result.innerHTML =
-        "🔴 NEEDS IMPROVEMENT<br><br>" +
-        "Recommendation: Improve attendance and study regularly.";
+        </div>
 
-    }
-}
 
-</script>
+        <div class="main-box">
+
+            <form id="predictionForm">
+
+                <label>
+                    Student Name
+                    <input
+                        type="text"
+                        id="name"
+                        placeholder="Enter your name"
+                        required
+                    >
+                </label>
+
+
+                <label>
+                    Attendance (%)
+                    <input
+                        type="number"
+                        id="attendance"
+                        placeholder="Example: 85"
+                        min="0"
+                        max="100"
+                        required
+                    >
+                </label>
+
+
+                <label>
+                    Study Hours / Day
+                    <input
+                        type="number"
+                        id="study_hours"
+                        placeholder="Example: 4"
+                        min="0"
+                        max="24"
+                        step="0.5"
+                        required
+                    >
+                </label>
+
+
+                <label>
+                    Previous Exam Mark (%)
+                    <input
+                        type="number"
+                        id="previous_mark"
+                        placeholder="Example: 75"
+                        min="0"
+                        max="100"
+                        required
+                    >
+                </label>
+
+
+                <label>
+                    Assignment Completion (%)
+                    <input
+                        type="number"
+                        id="assignments"
+                        placeholder="Example: 90"
+                        min="0"
+                        max="100"
+                        required
+                    >
+                </label>
+
+
+                <button type="submit">
+                    🔮 Predict Performance
+                </button>
+
+            </form>
+
+
+            <div id="result" class="result">
+
+                <div class="result-icon">
+                    📈
+                </div>
+
+                <h2>Your Result</h2>
+
+                <p>
+                    Enter your details and click the prediction button.
+                </p>
+
+                <div class="result-placeholder">
+                    Prediction will appear here
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <section id="about" class="about">
+
+        <div class="heading">
+
+            <div class="tag">Features</div>
+
+            <h2>How It Works</h2>
+
+        </div>
+
+
+        <div class="features">
+
+            <div class="feature">
+                📊
+                <h3>Performance Prediction</h3>
+                <p>
+                    Calculates an expected performance score
+                    using student academic information.
+                </p>
+            </div>
+
+
+            <div class="feature">
+                ⏱️
+                <h3>Study Analysis</h3>
+                <p>
+                    Considers your daily study hours and
+                    previous academic performance.
+                </p>
+            </div>
+
+
+            <div class="feature">
+                💡
+                <h3>Smart Suggestions</h3>
+                <p>
+                    Provides suggestions based on the
+                    predicted performance.
+                </p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <footer>
+
+        <p>
+            © 2026 Smart Student Predictor | College Hackathon Project
+        </p>
+
+    </footer>
+
+
+    <script src="script.js"></script>
 
 </body>
 </html>
